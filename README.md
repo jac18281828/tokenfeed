@@ -1,7 +1,13 @@
 ## TREx Token
 
-
 # WARNING - Testing Token - Not for Production!
+
+
+| Contract        | Deployment                                 | Network |
+| --------------- | ------------------------------------------ | ------- |
+| ProxyAdmin      | 0x48707AA23F0eB7A37C239a87fc0486489a293C8f | Sepolia |
+| TREx            | 0xe628A0B8304100695887b0b57d196e7CDEbF3894 | Sepolia |
+| SimplePriceFeed | 0x66C4924Cc30dC47D0c8484143236F465F4e37c9E | Sepolia |
 
 ## Foundry
 

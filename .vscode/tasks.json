@@ -114,6 +114,52 @@
                 "kind": "test",
                 "isDefault": false
             }
-        }
+        },
+        {
+            "label": "deployproxyadmin",
+            "type": "shell",
+            "command": "forge script ./script/DeployTREx.s.sol --sig 'deployAdmin()' --legacy --slow --broadcast --private-key ${PRIVATE_KEY} --rpc-url ${RPC_URL} --etherscan-api-key ${ETHERSCAN_API_KEY} --verify",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "ADMIN": "0x2E1F5C7f87096fb7FfFbB6654Fc3b2CE303aEff5",
+                }
+            },
+            "dependsOn": "test",
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "deploytrex",
+            "type": "shell",
+            "command": "forge script ./script/DeployTREx.s.sol --sig 'deployProxyTREx()' --broadcast --legacy --slow --private-key ${PRIVATE_KEY} --rpc-url ${RPC_URL}  --etherscan-api-key ${ETHERSCAN_API_KEY} --verify",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PROXY_ADMIN": "0xe6460418db6D7A6D85423560B19A8Af37c1092a4",
+                    "ADMIN": "0x2E1F5C7f87096fb7FfFbB6654Fc3b2CE303aEff5",
+                }
+            },
+            "dependsOn": "test",
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "deploypricefeed",
+            "type": "shell",
+            "command": "forge script ./script/DeployPriceFeed.s.sol --sig 'deployPriceFeed()' --broadcast --legacy --slow --private-key ${PRIVATE_KEY} --rpc-url ${RPC_URL}  --etherscan-api-key ${ETHERSCAN_API_KEY} --verify",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": "test",
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        },
     ]
 }
