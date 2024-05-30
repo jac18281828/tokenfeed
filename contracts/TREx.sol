@@ -6,6 +6,9 @@ import {ERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/
 import {AccessControlUpgradeable} from "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import {PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol";
 
+// based on Stader Labs' ETHx token contract
+// test purposes only, do not use in production
+
 /**
  * @title TREx token Contract for L2s
  * @author Stader Labs

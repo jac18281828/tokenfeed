@@ -8,8 +8,6 @@ import {PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/Pau
 import {TREx} from "../contracts/TREx.sol";
 
 contract TRExTest is Test {
-    error EnforcedPause();
-
     TREx private trex;
 
     function setUp() public {
