@@ -1,9 +1,11 @@
 // SPDX_License_Identifier: UNLICENSED
-pragma solidity 0.8.22;
+pragma solidity 0.8.25;
 
-import { Test } from "forge-std/Test.sol";
+import {Test} from "forge-std/Test.sol";
 
-import { TREx } from "../contracts/TREx.sol";
+import {PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol";
+
+import {TREx} from "../contracts/TREx.sol";
 
 contract TRExTest is Test {
     error EnforcedPause();
@@ -16,21 +18,21 @@ contract TRExTest is Test {
         trex = TREx(trexmock);
     }
 
-    function testInitialize() public {
+    function testInitialize() public view {
         assertEq(trex.name(), "TREx");
         assertEq(trex.symbol(), "TREx");
     }
 
     function testMint() public {
         address user = vm.addr(1001);
-        trex.mint(user, 100);
+        trex.mintTo(user, 100);
         assertEq(trex.balanceOf(user), 100);
     }
 
     function testBurn() public {
         // burn operation only works when the caller has the BURNER_ROLE
         address user = address(this);
-        trex.mint(user, 100);
+        trex.mintTo(user, 100);
         trex.burn(75);
         assertEq(trex.balanceOf(user), 25);
     }
@@ -38,9 +40,9 @@ contract TRExTest is Test {
     function testBurnPaused() public {
         // burn operation only works when the contract is not paused
         address user = address(this);
-        trex.mint(user, 100);
+        trex.mintTo(user, 100);
         trex.pause();
-        vm.expectRevert("Pausable: paused");
+        vm.expectRevert(abi.encodeWithSelector(PausableUpgradeable.EnforcedPause.selector));
         trex.burn(75);
     }
 
